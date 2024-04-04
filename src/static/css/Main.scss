@@ -1,0 +1,189 @@
+@mixin temp_() {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  p {
+    padding: 0;
+    margin: 0;
+    font-size: 1.2rem;
+
+    &:last-child {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+@mixin weather-card () {
+
+  display: grid;
+  margin-right: 0.6rem;
+  margin-bottom: 0.6rem;
+  box-shadow: 2px 3px 3px #d7d6d6;
+  border-radius: 5px;
+  padding: 1rem 1rem;
+  row-gap: 0.7rem;
+  column-gap: 0.6rem;
+  background-color: #fff;
+
+  @media screen and (min-width: 1024px) {
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .date {
+    grid-area: date;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  .descript {
+    grid-area: descript;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+  .temp-min {
+    @include temp_;
+    grid-area: temp-min;
+  }
+  .temp-max {
+    @include temp_;
+    grid-area: temp-max;
+  }
+  .temp {
+    display: flex;
+    grid-area: temp;
+    align-items: end;
+    justify-content: center;
+    font-size: 3rem;
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    text-align: center;
+    max-width: 80%;
+  }
+
+  .weather-current {
+    @include weather-card;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+    'date date date'
+    'descript descript descript'
+    'temp-min temp temp-max'
+    'humidity null pressure';
+
+    //.null {grid-area: null}
+  }
+
+  .week-container {
+    width: 60vw;
+
+    .weather-week {
+      display: flex;
+      flex-direction: row;
+      overflow-x: auto;
+
+      .weather-day {
+        @include weather-card;
+        flex-grow: 1;
+        cursor: pointer;
+        grid-template-columns: repeat(2, 1fr);
+
+
+        grid-template-areas:
+          'date date'
+          'temp-min temp-max';
+
+        .date {
+          text-align: center;
+        }
+      }
+    }
+    @media screen and (min-width: 1024px) {
+      .weather-day.active {
+        margin-bottom: 0;
+        padding-bottom: 2.1rem;
+      }
+    }
+
+    .detail {
+      display: flex;
+      justify-content: space-between;
+      background-color: #fff;
+      box-shadow: 2px 3px 3px #d7d6d6;
+      padding: 1rem;
+      flex-wrap: nowrap;
+      max-width: 70vw;
+
+      .at-time {
+        display: flex;
+        flex-direction: column;
+        margin: 1rem;
+
+        p {
+          margin: 0 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1023px){
+  main {
+    font-size: 2rem;
+
+    .week-container {
+      width: 80vw;
+      display: grid;
+      grid-template-columns: 1.5fr 2fr;
+      align-items: start;
+
+      &:nth-child(2) {
+        align-items: stretch;
+      }
+
+      .weather-week {
+        display: flex;
+        flex-direction: column;
+        overflow-x: auto;
+
+        .weather-day {
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      .weather-day.active {
+        margin-right: 0;
+        padding-right: 2.1rem;
+      }
+
+      .detail {
+        flex-grow: 1;
+        flex-direction: column;
+        align-items: center;
+        justify-content: stretch;
+        min-height: 45%;
+
+        .at-time {
+          display: flex;
+          flex-direction: row;
+          margin: 1rem;
+        }
+      }
+    }
+  }
+}

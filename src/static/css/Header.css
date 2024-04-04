@@ -1,0 +1,31 @@
+header {
+  background-color: #02002d;
+  color: #dcdcdc;
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 0;
+  font-size: 1.6rem;
+}
+header button {
+  font-size: 1rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 5px;
+  border: 1px solid #9c9c9c;
+  box-shadow: 2px 3px 3px #d7d6d6;
+  background-color: #faf1f2;
+  transition: 0.3s;
+  cursor: pointer;
+}
+header button:hover {
+  background-color: #7e7100;
+  border: 1px solid #7e7100;
+  color: #faf1f2;
+}
+
+@media screen and (max-width: 1023px) {
+  header button {
+    font-size: 2rem;
+  }
+}
+
+/*# sourceMappingURL=Header.css.map */

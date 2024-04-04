@@ -1,0 +1,220 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main h1 {
+  text-align: center;
+  max-width: 80%;
+}
+main .weather-current {
+  display: grid;
+  margin-right: 0.6rem;
+  margin-bottom: 0.6rem;
+  box-shadow: 2px 3px 3px #d7d6d6;
+  border-radius: 5px;
+  padding: 1rem 1rem;
+  row-gap: 0.7rem;
+  column-gap: 0.6rem;
+  background-color: #fff;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: "date date date" "descript descript descript" "temp-min temp temp-max" "humidity null pressure";
+}
+@media screen and (min-width: 1024px) {
+  main .weather-current:last-child {
+    margin-right: 0;
+  }
+}
+main .weather-current .date {
+  grid-area: date;
+}
+main .weather-current .date::first-letter {
+  text-transform: uppercase;
+}
+main .weather-current .descript {
+  grid-area: descript;
+}
+main .weather-current .descript::first-letter {
+  text-transform: uppercase;
+}
+main .weather-current .temp-min {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  grid-area: temp-min;
+}
+main .weather-current .temp-min p {
+  padding: 0;
+  margin: 0;
+  font-size: 1.2rem;
+}
+main .weather-current .temp-min p:last-child {
+  font-size: 0.9rem;
+}
+main .weather-current .temp-max {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  grid-area: temp-max;
+}
+main .weather-current .temp-max p {
+  padding: 0;
+  margin: 0;
+  font-size: 1.2rem;
+}
+main .weather-current .temp-max p:last-child {
+  font-size: 0.9rem;
+}
+main .weather-current .temp {
+  display: flex;
+  grid-area: temp;
+  align-items: end;
+  justify-content: center;
+  font-size: 3rem;
+}
+main .week-container {
+  width: 60vw;
+}
+main .week-container .weather-week {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+}
+main .week-container .weather-week .weather-day {
+  display: grid;
+  margin-right: 0.6rem;
+  margin-bottom: 0.6rem;
+  box-shadow: 2px 3px 3px #d7d6d6;
+  border-radius: 5px;
+  padding: 1rem 1rem;
+  row-gap: 0.7rem;
+  column-gap: 0.6rem;
+  background-color: #fff;
+  flex-grow: 1;
+  cursor: pointer;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: "date date" "temp-min temp-max";
+}
+@media screen and (min-width: 1024px) {
+  main .week-container .weather-week .weather-day:last-child {
+    margin-right: 0;
+  }
+}
+main .week-container .weather-week .weather-day .date {
+  grid-area: date;
+}
+main .week-container .weather-week .weather-day .date::first-letter {
+  text-transform: uppercase;
+}
+main .week-container .weather-week .weather-day .descript {
+  grid-area: descript;
+}
+main .week-container .weather-week .weather-day .descript::first-letter {
+  text-transform: uppercase;
+}
+main .week-container .weather-week .weather-day .temp-min {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  grid-area: temp-min;
+}
+main .week-container .weather-week .weather-day .temp-min p {
+  padding: 0;
+  margin: 0;
+  font-size: 1.2rem;
+}
+main .week-container .weather-week .weather-day .temp-min p:last-child {
+  font-size: 0.9rem;
+}
+main .week-container .weather-week .weather-day .temp-max {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  grid-area: temp-max;
+}
+main .week-container .weather-week .weather-day .temp-max p {
+  padding: 0;
+  margin: 0;
+  font-size: 1.2rem;
+}
+main .week-container .weather-week .weather-day .temp-max p:last-child {
+  font-size: 0.9rem;
+}
+main .week-container .weather-week .weather-day .temp {
+  display: flex;
+  grid-area: temp;
+  align-items: end;
+  justify-content: center;
+  font-size: 3rem;
+}
+main .week-container .weather-week .weather-day .date {
+  text-align: center;
+}
+@media screen and (min-width: 1024px) {
+  main .week-container .weather-day.active {
+    margin-bottom: 0;
+    padding-bottom: 2.1rem;
+  }
+}
+main .week-container .detail {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  box-shadow: 2px 3px 3px #d7d6d6;
+  padding: 1rem;
+  flex-wrap: nowrap;
+  max-width: 70vw;
+}
+main .week-container .detail .at-time {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+main .week-container .detail .at-time p {
+  margin: 0 1.5rem;
+}
+
+@media screen and (max-width: 1023px) {
+  main {
+    font-size: 2rem;
+  }
+  main .week-container {
+    width: 80vw;
+    display: grid;
+    grid-template-columns: 1.5fr 2fr;
+    align-items: start;
+  }
+  main .week-container:nth-child(2) {
+    align-items: stretch;
+  }
+  main .week-container .weather-week {
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+  }
+  main .week-container .weather-week .weather-day:last-child {
+    margin-bottom: 0;
+  }
+  main .week-container .weather-day.active {
+    margin-right: 0;
+    padding-right: 2.1rem;
+  }
+  main .week-container .detail {
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: stretch;
+    min-height: 45%;
+  }
+  main .week-container .detail .at-time {
+    display: flex;
+    flex-direction: row;
+    margin: 1rem;
+  }
+}
+
+/*# sourceMappingURL=Main.css.map */
